@@ -5,7 +5,7 @@ if __name__ == '__main__':
     import json
     import csv
 
-    with open('test.json', encoding='utf-8') as json_file:
+    with open('result.json', encoding='utf-8') as json_file:
         result = json_file.read()
         dict_file = json.loads(result)
 
@@ -24,6 +24,7 @@ if __name__ == '__main__':
                     for new_line in old_list:
                         for new_v in value:
                             if isinstance(new_v, dict) or isinstance(new_v, list):
+                                new_list.append(new_line)
                                 new_list = recursive_write(new_list or old_list, new_line, old_key, new_v)
                             else:
                                 copy_dict = new_line.copy()
