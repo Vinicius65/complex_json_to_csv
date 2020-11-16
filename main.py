@@ -4,37 +4,10 @@ count_recursive = 0
 if __name__ == '__main__':
     import json
     import csv
-    #
-    # def recursive_discovery_headers_dict(old_key, value_dict):
-    #     for new_k, value in value_dict.items():
-    #         part_k = old_key + '/' + new_k
-    #         if isinstance(value, dict):
-    #             recursive_discovery_headers_dict(part_k, value)
-    #         elif isinstance(value, list):
-    #             recursive_discovery_headers_list(part_k, value)
-    #         else:
-    #             header.add(part_k)
-    #
-    # def recursive_discovery_headers_list(old_key, value_list):
-    #     for value in value_list:
-    #         if isinstance(value, dict):
-    #             recursive_discovery_headers_dict(old_key, value)
-    #         elif isinstance(value, list):
-    #             recursive_discovery_headers_list(old_key, value)
-    #         else:
-    #             header.add(old_key)
-    #
-    #
+
     with open('result.json', encoding='utf-8') as json_file:
         result = json_file.read()
         dict_file = json.loads(result)
-        # for k, v in dict_file.items():
-        #     if isinstance(v, dict):
-        #         recursive_discovery_headers_dict(k, v)
-        #     elif isinstance(v, list):
-        #         recursive_discovery_headers_list(k, v)
-        #     else:
-        #         header.add(k)
 
         with open('result.csv', 'w', encoding='utf-8', newline='') as csv_file:
             initial_dict = {}
