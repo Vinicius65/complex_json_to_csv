@@ -5,7 +5,7 @@ if __name__ == '__main__':
     import json
     import csv
 
-    with open('someone_list.json', encoding='utf-8') as json_file:
+    with open('test.json', encoding='utf-8') as json_file:
         result = json_file.read()
         dict_file = json.loads(result)
 
@@ -19,12 +19,12 @@ if __name__ == '__main__':
                 if isinstance(value, dict):
                     for partial_k, new_v in value.items():
                         new_k = old_key + '/' + partial_k
-                        new_list = recursive_write(old_list, line, new_k, new_v)
+                        new_list = recursive_write(new_list or old_list, line, new_k, new_v)
                 elif isinstance(value, list):
                     for new_line in old_list:
                         for new_v in value:
                             if isinstance(new_v, dict) or isinstance(new_v, list):
-                                new_list = recursive_write(old_list, line, old_key, new_v)
+                                new_list = recursive_write(new_list or old_list, new_line, old_key, new_v)
                             else:
                                 copy_dict = new_line.copy()
                                 copy_dict[old_key] = new_v
